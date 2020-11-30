@@ -358,9 +358,18 @@
             });
         });
     });
+    on("change:pc_or_npc", function(){
+        getAttrs(["pc_or_npc"], function(val){
+            var wtype = val.pc_or_npc === "npc" ? "/w gm" : ""
+            setAttrs({
+                wtype: wtype
+            });
+        });
+    });
 </script>
 <!-- === SHEET ===  -->
 <input type="hidden" name="attr_sheetversion" value="1.0" />
+<input type="hidden" name="attr_wtype" value="" />
 <div class="sheet-main">
     <div class="sheet-ligne"> <!-- LINE 1 -->
         <div class="mycol sheet-bord"> <!-- BIO and PHYISCAL -->
@@ -413,6 +422,13 @@
                 <img style="width:300px;" src="https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/swords-and-wizardry/SWSheet_logo.gif" alt="Swords & Wizardry">
             </div>
             <div class="sheet-ligne" style="text-align: center;">
+                <span class="sheet-lib1 sheet-wid70" data-i18n="pc_or_npc">PC/NPC</span>
+                <select name="attr_pc_or_npc" style="width: 170px; margin-bottom: 1rem;">
+                    <option value="pc">PC</option>
+                    <option value="npc">NPC</option>
+                </select>
+            </div>
+            <div class="sheet-ligne" style="text-align: center;">
                 <span class="sheet-lib1 sheet-wid70" data-i18n="languages">Languages</span>
                 <textarea style="width:170px;height:48px;" name="attr_langs" data-i18n-placeholder="languages" placeholder="Languages"></textarea>
             </div>
@@ -430,7 +446,7 @@
                     /
                     <input type="number" name="attr_hp_max" value="0" class="sheet-shortinput" data-i18n-title="maximum-hp" title="Current HP"/>
                     <span class="sheet-lib1 sheet-wid30" data-i18n="HD">HD</span>
-                    <button type="roll" name="RollHD" data-i18n-title="roll-hd" title="Roll HD" value="&{template:tmpl} {{pc=@{character_name}}} {{hd=1}} {{roll=[[@{hd}]]}}"></button>
+                    <button type="roll" name="RollHD" data-i18n-title="roll-hd" title="Roll HD" value="@{wtype} &{template:tmpl} {{pc=@{character_name}}} {{hd=1}} {{roll=[[@{hd}]]}}"></button>
                     <input type="text" name="attr_hd" class="sheet-medinput" data-i18n-placeholder="hd-example" placeholder="Ex:5d6+5" />
                 </div>
                 <div class="sheet-mycol sheet-greybg" style="width:550px;">

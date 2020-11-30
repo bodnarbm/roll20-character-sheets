@@ -91,6 +91,7 @@
     "open-doors-title": "Open Doors. Automatically calculted when STR is modified. Can be overriden.",
     "other": "Other",
     "other-ac-effect": "Other effect on AC. The value will be used (added) as written, NOT depending on the Ascending or Descending AC choice, so that malus can be set.",
+    "pc_or_npc": "PC or NPC",
     "primary": "Primary",
     "primary-attribute": "Primary Attribute",
     "qty": "Qty",
